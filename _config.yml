@@ -1,0 +1,39 @@
+title: "Moment7 · Security Notes"
+tagline: "HTB walkthroughs, CTF solutions and the notes I take while learning."
+description: "A cybersecurity blog: Hack The Box walkthroughs, CTF writeups, technical notes and cheatsheets."
+author: "Moment777"
+
+# User/group site (repo named USERNAME.gitlab.io):  baseurl: ""
+# Project site (repo named "blog"):                  baseurl: "/blog"
+url: "https://USERNAME.gitlab.io"
+baseurl: ""
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+permalink: /:categories/:title/
+timezone: UTC
+future: false
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - vendor
+  - public
+  - .gitlab-ci.yml
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      toc: true
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: page

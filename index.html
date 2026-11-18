@@ -1,0 +1,23 @@
+---
+layout: default
+title: Home
+---
+<section class="hero">
+  <h1>{{ site.tagline }}</h1>
+  <p>Step-by-step writeups with the commands I ran, what I expected, and what actually happened.</p>
+  <ul class="tags">
+    <li><a class="badge badge-htb" href="{{ '/htb/' | relative_url }}">htb</a></li>
+    <li><a class="badge badge-ctf" href="{{ '/ctf/' | relative_url }}">ctf</a></li>
+    <li><a class="badge badge-notes" href="{{ '/notes/' | relative_url }}">notes</a></li>
+    <li><a class="badge badge-cheatsheets" href="{{ '/cheatsheets/' | relative_url }}">cheatsheets</a></li>
+  </ul>
+</section>
+
+<h2 class="section-title">Latest writeups</h2>
+<div class="card-list">
+  {% for post in site.posts limit: 8 %}
+    {% include post-card.html post=post %}
+  {% else %}
+    <p class="empty">No posts yet. Add a Markdown file to <code>_posts/</code>.</p>
+  {% endfor %}
+</div>

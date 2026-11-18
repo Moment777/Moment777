@@ -1,0 +1,9 @@
+---
+layout: default
+---
+<article class="page">
+  <h1 class="page-title">{{ page.title }}</h1>
+  {% if page.intro %}<p class="lead">{{ page.intro }}</p>{% endif %}
+  <div class="post-content">{{ content }}</div>
+  {% if page.list_category %}{% include post-list.html category=page.list_category %}{% endif %}
+</article>

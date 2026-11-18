@@ -1,0 +1,15 @@
+{% assign cat = page.categories | first %}
+{% assign group = site.categories[cat] %}
+{% for p in group %}{% if p.url == page.url %}{% assign idx = forloop.index0 %}{% endif %}{% endfor %}
+{% assign newer_idx = idx | minus: 1 %}
+{% assign older_idx = idx | plus: 1 %}
+{% if idx > 0 %}{% assign newer = group[newer_idx] %}{% endif %}
+{% assign older = group[older_idx] %}
+<nav class="post-nav" aria-label="More in {{ cat }}">
+  {% if older %}
+    <a class="prev" href="{{ older.url | relative_url }}"><span class="dir">&larr; Previous in {{ cat }}</span><span class="ttl">{{ older.title }}</span></a>
+  {% else %}<span></span>{% endif %}
+  {% if newer %}
+    <a class="next" href="{{ newer.url | relative_url }}"><span class="dir">Next in {{ cat }} &rarr;</span><span class="ttl">{{ newer.title }}</span></a>
+  {% else %}<span></span>{% endif %}
+</nav>

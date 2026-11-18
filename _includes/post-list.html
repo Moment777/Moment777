@@ -1,0 +1,8 @@
+{% assign items = site.categories[include.category] %}
+{% if items and items.size > 0 %}
+  <div class="card-list">
+    {% for post in items %}{% include post-card.html post=post %}{% endfor %}
+  </div>
+{% else %}
+  <p class="empty">Nothing here yet. Add a file to <code>_posts/</code> with <code>categories: [{{ include.category }}]</code>.</p>
+{% endif %}

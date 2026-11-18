@@ -1,0 +1,37 @@
+---
+layout: default
+---
+{% assign cat = page.categories | first %}
+{% assign words = content | number_of_words %}
+<article class="post">
+  <header class="post-header">
+    <a class="badge badge-{{ cat }}" href="{{ '/' | append: cat | append: '/' | relative_url }}">{{ cat }}</a>
+    <h1 class="post-title">{{ page.title }}</h1>
+    <p class="post-meta">
+      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%d %B %Y" }}</time>
+      <span>{{ words | divided_by: 200 | plus: 1 }} min read</span>
+      {% if page.difficulty %}<span class="diff diff-{{ page.difficulty | downcase }}">{{ page.difficulty }}</span>{% endif %}
+    </p>
+    {% if page.tags.size > 0 %}
+    <ul class="tags">
+      {% for tag in page.tags %}{% assign slug = tag | slugify %}<li><a href="{{ '/tags/' | relative_url }}#{{ slug }}">#{{ tag }}</a></li>{% endfor %}
+    </ul>
+    {% endif %}
+  </header>
+
+  <div class="post-layout{% unless page.toc %} no-toc{% endunless %}">
+    {% if page.toc %}
+    <aside class="toc" aria-label="Table of contents">
+      <details open>
+        <summary>On this page</summary>
+        <ol id="toc-list"></ol>
+      </details>
+    </aside>
+    {% endif %}
+    <div class="post-content" id="post-content">
+      {{ content }}
+    </div>
+  </div>
+
+  {% include post-nav.html %}
+</article>

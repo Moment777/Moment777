@@ -1,0 +1,19 @@
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="{{ '/' | relative_url }}"><span class="prompt">$</span> {{ site.title }}<span class="cursor" aria-hidden="true"></span></a>
+    <nav class="nav" aria-label="Main">
+      {% for item in site.data.navigation %}
+        {% assign is_active = false %}
+        {% if item.url == '/' %}
+          {% if page.url == '/' %}{% assign is_active = true %}{% endif %}
+        {% elsif page.url contains item.url %}
+          {% assign is_active = true %}
+        {% endif %}
+        <a href="{{ item.url | relative_url }}"{% if is_active %} class="active" aria-current="page"{% endif %}>{{ item.title }}</a>
+      {% endfor %}
+    </nav>
+    <form class="search-box" action="{{ '/search/' | relative_url }}" method="get" role="search">
+      <input type="search" name="q" placeholder="Search  ( / )" aria-label="Search the blog" id="header-search">
+    </form>
+  </div>
+</header>

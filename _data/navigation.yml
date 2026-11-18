@@ -1,0 +1,12 @@
+- title: Home
+  url: /
+- title: HTB
+  url: /htb/
+- title: CTF
+  url: /ctf/
+- title: Notes
+  url: /notes/
+- title: Cheatsheets
+  url: /cheatsheets/
+- title: About
+  url: /about/

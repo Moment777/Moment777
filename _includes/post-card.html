@@ -1,0 +1,16 @@
+{% assign p = include.post %}
+{% assign cat = p.categories | first %}
+<article class="card">
+  <div class="card-meta">
+    <a class="badge badge-{{ cat }}" href="{{ '/' | append: cat | append: '/' | relative_url }}">{{ cat }}</a>
+    <time datetime="{{ p.date | date_to_xmlschema }}">{{ p.date | date: "%d %b %Y" }}</time>
+    {% if p.difficulty %}<span class="diff diff-{{ p.difficulty | downcase }}">{{ p.difficulty }}</span>{% endif %}
+  </div>
+  <h2 class="card-title"><a href="{{ p.url | relative_url }}">{{ p.title }}</a></h2>
+  <p class="card-desc">{{ p.description | default: p.excerpt | strip_html | truncate: 170 }}</p>
+  {% if p.tags.size > 0 %}
+  <ul class="tags">
+    {% for tag in p.tags %}{% assign slug = tag | slugify %}<li><a href="{{ '/tags/' | relative_url }}#{{ slug }}">#{{ tag }}</a></li>{% endfor %}
+  </ul>
+  {% endif %}
+</article>
