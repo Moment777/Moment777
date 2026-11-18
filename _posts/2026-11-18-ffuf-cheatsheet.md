@@ -2,7 +2,7 @@
 title: "ffuf cheatsheet"
 categories: [cheatsheets]
 tags: [ffuf, recon, cheatsheet]
-description: The nmap flags I use most, grouped by what I am trying to do.
+description: ffuf cheatsheat
 ---
 
 ---
